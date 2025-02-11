@@ -3,7 +3,6 @@ package com.bookshore.demo.BookModels;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.rmi.server.UID;
 import java.util.UUID;
 
 @Entity
