@@ -1,9 +1,9 @@
 package com.bookshore.demo.BookModels;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.rmi.server.UID;
 import java.util.UUID;
 
 @Entity
@@ -18,6 +18,12 @@ public class ReviewModel implements Serializable {
 
     @Column(nullable = false)
     private String review;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToOne
+    @JoinColumn(name = "book_ID")
+    private BookModel book;
+
 
     public UUID getId() {
         return id;
