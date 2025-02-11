@@ -1,6 +1,5 @@
 package com.bookshore.demo.BookModels;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -26,15 +25,12 @@ public class BookModel implements Serializable {
     private PublisherModel publisher;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "autor_ID")
-    private AutorModel autor;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "tb_book_autor",
-            joinColumns = @JoinColumn(name = "book_ID"),
+    @JoinTable(
+            name = "tb_book_autor",
+            joinColumns = @JoinColumn(name="book_ID"),
             inverseJoinColumns = @JoinColumn(name="autor_ID"))
+    private Set<AutorModel> authors= new HashSet<>();
 
-    private Set<BookModel> authors= new HashSet<>();
 
     public UUID getId() {
         return id;
@@ -60,11 +56,11 @@ public class BookModel implements Serializable {
         this.publisher = publisher;
     }
 
-    public Set<BookModel> getAuthors() {
+    public Set<AutorModel> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(Set<BookModel> authors) {
+    public void setAuthors(Set<AutorModel> authors) {
         this.authors = authors;
     }
 }
