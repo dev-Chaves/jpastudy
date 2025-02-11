@@ -1,4 +1,4 @@
-package com.bookshore.demo.BookModels;
+package com.bookshore.demo.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
