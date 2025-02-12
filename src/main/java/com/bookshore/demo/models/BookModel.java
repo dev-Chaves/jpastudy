@@ -1,4 +1,4 @@
-package com.bookshore.demo.BookModels;
+package com.bookshore.demo.models;
 
 import jakarta.persistence.*;
 
@@ -24,7 +24,7 @@ public class BookModel implements Serializable {
     @JoinColumn(name = "publisher_ID")
     private PublisherModel publisher;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany //(fetch = FetchType.LAZY)
     @JoinTable(
             name = "tb_book_autor",
             joinColumns = @JoinColumn(name="book_ID"),
